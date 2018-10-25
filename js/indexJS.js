@@ -1,10 +1,10 @@
-var canvas;
+var canvas,playButton,forwardButton,backwardButton,input,amp;
+
 var number=1;
 var val = 0.5;
 
 var song,color;
 var colorChange = true;
-var play = true;
 
 /*function preload(){
 	song = loadSound("test.mp3");
@@ -14,28 +14,73 @@ var play = true;
 
 //initialize the page
 function setup() {
-	canvas = createCanvas(200,200);
-	canvas.position(200,200);
+	canvas = createCanvas(windowWidth,windowHeight);
+	canvas.mousePressed(tooglePlay);
+
+	input = createFileInput(uploaded);
+	input.position(0,windowHeight-100);
+
+	backwardButton = createButton('<<');
+	backwardButton.position(input.width,windowHeight-100);
+	backwardButton.mousePressed(backwardSong);
+
+	playButton = createButton('Play');
+	playButton.style('width','50')
+	playButton.position(backwardButton.width+backwardButton.x,windowHeight-100);
+	playButton.mousePressed(tooglePlay);
+
+	forwardButton = createButton('>>');
+	forwardButton.position(playButton.width+playButton.x,windowHeight-100);
+	forwardButton.mousePressed(forwardSong);
+
+	amp = new p5.Amplitude();
 
 	//playing sound in preload method
 	//song.play();
 
 	//loading sound in callback method
-	song = loadSound('test.mp3',doneLoading);
 	
+}
+function backwardSong(){
+	song.jump(song.currentTime()-5);
+}
+function forwardSong(){
+	song.jump(song.currentTime()+5);
+}
+
+function uploaded(file){
+	if(song!=null){
+		song.stop();
+	}
+	song = loadSound(file,doneLoading);
 	song.setVolume(val);
 }
 
 function doneLoading(){
-
-	//playing sound in callback method
-	song.play();
+	
+	tooglePlay();
 }
 
 //calls infinitely
 function draw(){
-	if(colorChange)color = random(255);
-	background(color);
+	clear();
+	/*if(colorChange){
+		color = random(255);
+		background(color);
+	}*/
+
+	var vol = amp.getLevel();
+
+	//fill(random(255),random(255),random(255));
+	noStroke();
+	fill(255,0,random(255));
+	ellipse(width/2,height/2,vol*width/val,vol*width/val);
+
+	//fill(random(255),random(255),random(255));
+	noStroke();
+	fill(255,0,random(255));
+	ellipse(width/2,height/2,0.5*vol*width/val,0.5*vol*width/val);
+
 }
 
 function keyPressed() {
@@ -48,15 +93,16 @@ function keyPressed() {
   }
 }
 
-function mousePressed(){
-	if(play){
+function tooglePlay(){
+	if(song.isPlaying()){
 		song.pause();
-  		colorChange = false;
+		playButton.html('Play');
+		colorChange = false;
 	}
 	else{
 		song.play();
-  		colorChange = true;
+		playButton.html('Pause');
+		colorChange = true;
 	}
-	play = !play;
 }
 
