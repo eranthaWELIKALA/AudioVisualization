@@ -1,10 +1,11 @@
-var canvas,playButton,forwardButton,backwardButton,input,amp;
+var canvas,playButton,forwardButton,backwardButton,input,fft;
+var volumeHistory = [];
 
 var number=1;
 var val = 0.5;
 
-var song,colorP5;
-var colorChange = true;
+var song,play;
+var w;
 
 /*function preload(){
 	song = loadSound("test.mp3");
@@ -14,12 +15,14 @@ var colorChange = true;
 
 //initialize the page
 function setup() {
+	
 	canvas = createCanvas(windowWidth,windowHeight);
-	canvas.parent('p5Div');
 	canvas.mousePressed(tooglePlay);
+	
 
 	input = createFileInput(uploaded);
 	input.position(0,windowHeight-100);
+	colorMode(HSB);
 
 	backwardButton = createButton('<<');
 	backwardButton.position(input.width,windowHeight-100);
@@ -34,7 +37,9 @@ function setup() {
 	forwardButton.position(playButton.width+playButton.x,windowHeight-100);
 	forwardButton.mousePressed(forwardSong);
 
-	amp = new p5.Amplitude();
+	fft = new p5.FFT(0,16);
+
+	w = width/16;
 
 	//playing sound in preload method
 	//song.play();
@@ -64,24 +69,36 @@ function doneLoading(){
 
 //calls infinitely
 function draw(){
-	clear();
-	/*if(colorChange){
-		colorP5 = random(255);
-		background(colorP5);
-	}*/
+		clear();background(0);
+		noStroke();
+		var spectrum = fft.analyze();
+		for(var itr = 0;itr<spectrum.length;itr++){
+			//var x = map(itr,0,spectrum.length,0,width);
+			var amp = spectrum[itr];
+			var y = map(amp,0,255,0,height/2);
+			fill(itr*4,255,255);
+			rect(itr*w,height*0.5-y,w,y);
+		}
 
-	var vol = amp.getLevel();
 
-	//fill(random(255),random(255),random(255));
-	noStroke();
-	fill(255,0,random(255));
-	ellipse(width/2,height/2,vol*width/val,vol*width/val);
+		/*volumeHistory.push(amp.getLevel());
+		stroke(0);
+		fill(255);
+		beginShape();
+		for(var i = 0; i < volumeHistory.length; i++){
+			var mappedValue = map(volumeHistory[i],0,1,height/2,0);
+			vertex(i,mappedValue);
+		}
+		endShape();
 
-	//fill(random(255),random(255),random(255));
-	noStroke();
-	fill(255,0,random(255));
-	ellipse(width/2,height/2,0.5*vol*width/val,0.5*vol*width/val);
+		if(volumeHistory.length > width){
+			volumeHistory.splice(0,1);
+		}*/
+	
+}
 
+function graph(){
+	
 }
 
 function keyPressed() {
@@ -106,3 +123,4 @@ function tooglePlay(){
 		colorChange = true;
 	}
 }
+

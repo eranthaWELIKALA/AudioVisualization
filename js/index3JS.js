@@ -1,21 +1,14 @@
 var canvas,playButton,forwardButton,backwardButton,input,amp;
+var volumeHistory = [];
 
 var number=1;
 var val = 0.5;
 
-var song,colorP5;
-var colorChange = true;
-
-/*function preload(){
-	song = loadSound("test.mp3");
-}*/
-
-
+var song,play;
 
 //initialize the page
 function setup() {
 	canvas = createCanvas(windowWidth,windowHeight);
-	canvas.parent('p5Div');
 	canvas.mousePressed(tooglePlay);
 
 	input = createFileInput(uploaded);
@@ -64,24 +57,35 @@ function doneLoading(){
 
 //calls infinitely
 function draw(){
-	clear();
-	/*if(colorChange){
-		colorP5 = random(255);
-		background(colorP5);
-	}*/
+		background(255);
+		volumeHistory.push(amp.getLevel());
+		stroke(0);
+		//fill(255);
+		
+		translate(width/2,height/2);
 
-	var vol = amp.getLevel();
+		beginShape();
+		for(var i = 0; i < 360; i++){
+		    clear();
+            var mappedValue = map(volumeHistory[i],0,0.5,20,height);
+            arc(0, 0, mappedValue, mappedValue, 0, PI , PIE);
+			/*var r=map(i, 0, 360, 0, width/4,true);
+			var x = r * cos(i);
+			var y = r * sin(i);*/
+			//var mappedValue = map(volumeHistory[i],0,1,height/2,0);
+			//vertex(x,y);
+			// line(width/2,height/2,x,y);
+		}
+		endShape();
 
-	//fill(random(255),random(255),random(255));
-	noStroke();
-	fill(255,0,random(255));
-	ellipse(width/2,height/2,vol*width/val,vol*width/val);
+		if(volumeHistory.length > 360){
+			volumeHistory.splice(0,1);
+		}
+	
+}
 
-	//fill(random(255),random(255),random(255));
-	noStroke();
-	fill(255,0,random(255));
-	ellipse(width/2,height/2,0.5*vol*width/val,0.5*vol*width/val);
-
+function graph(){
+	
 }
 
 function keyPressed() {
@@ -106,3 +110,4 @@ function tooglePlay(){
 		colorChange = true;
 	}
 }
+

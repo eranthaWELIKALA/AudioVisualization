@@ -1,9 +1,11 @@
-var canvas,playButton,forwardButton,backwardButton,input,amp;
+function indexJS(){
+
+	var canvas,playButton,forwardButton,backwardButton,input,amp;
 
 var number=1;
 var val = 0.5;
 
-var song,colorP5;
+var song,color;
 var colorChange = true;
 
 /*function preload(){
@@ -15,7 +17,6 @@ var colorChange = true;
 //initialize the page
 function setup() {
 	canvas = createCanvas(windowWidth,windowHeight);
-	canvas.parent('p5Div');
 	canvas.mousePressed(tooglePlay);
 
 	input = createFileInput(uploaded);
@@ -66,8 +67,8 @@ function doneLoading(){
 function draw(){
 	clear();
 	/*if(colorChange){
-		colorP5 = random(255);
-		background(colorP5);
+		color = random(255);
+		background(color);
 	}*/
 
 	var vol = amp.getLevel();
@@ -105,4 +106,8 @@ function tooglePlay(){
 		playButton.html('Pause');
 		colorChange = true;
 	}
+}
+
+
+
 }
