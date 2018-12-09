@@ -1,0 +1,145 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r83/three.min.js"></script><!-- 
+  <script src="js/OrbitControls.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    <style>
+      #p5Div, #threejsDiv {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      #p5Div {
+        z-index: 1;
+      }
+    </style>
+	</head>
+	<body>
+    <div id='p5Div'></div>
+    <div id='threejsDiv'></div>
+	</body>
+
+<script>
+  function setup() {
+  var c = createCanvas(windowWidth, windowHeight);
+  c.parent('p5Div');
+  fill('red');
+  ellipse(width / 2, height / 2, 80, 80);
+}
+
+var scene = new THREE.Scene();
+var cam = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+var geometry = new THREE.BoxGeometry(1, 1, 1);
+var material = new THREE.MeshBasicMaterial({
+  color: 0x00ff00
+});
+var cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+cam.position.z = 5;
+
+var render = function() {
+  requestAnimationFrame(render);
+
+  cube.rotation.x += 0.1;
+  cube.rotation.y += 0.1;
+
+  renderer.render(scene, cam);
+};
+
+render();
+
+var scene = new THREE.Scene();
+
+    /*User see the world through this*/
+    /*PerspectiveCamera or OrthographicCamera*/
+    /*parameters - Degrees, Ratio of our browser, near Clipping Plane, Far Clipping Plane*/
+    var camera =  new THREE.PerspectiveCamera(75, window.innerWidth/ window.innerHeight, 0.1, 100000);
+
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    window.addEventListener('resize', function(){
+      var width = window.innerWidth;
+      var height = window.innerHeight;
+      renderer.setSize(width, height);
+      camera.aspect = width/height;
+      camera.updateProjectionMatrix();
+    });
+
+    /*var effect = new THREE.AnaglyphEffect(renderer);
+    effect.setSize(window.innerWidth, window.innerHeight);*/
+
+
+
+    //controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+
+    //create the shape
+    //var geometry = new THREE.BoxGeometry(2, 2, 2);
+    var geometry1 = new THREE.BoxGeometry(10000, 10000, 10000);
+
+    //create a material colour or image texture
+    /*var cubeMaterial = [
+      new THREE.MeshPhongMaterial({color:0xFFFFFF,side:THREE.DoubleSide}),//right side
+      new THREE.MeshPhongMaterial({color:0xFFFFFF,side:THREE.DoubleSide}),//left side
+      new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('Images/Era.jpg'),side:THREE.DoubleSide}),//top side
+      new THREE.MeshLambertMaterial({map:new THREE.TextureLoader().load('Images/Era.jpg'),side:THREE.DoubleSide}),//bottom side
+      new THREE.MeshPhongMaterial({map:new THREE.TextureLoader().load('Images/Era.jpg'),side:THREE.DoubleSide}),//front side
+      new THREE.MeshPhongMaterial({map:new THREE.TextureLoader().load('Images/Era.jpg'),side:THREE.DoubleSide})//back side
+    ];
+*/
+    var cubeMaterial1 = [
+      new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('Images/sky/violentdays_ft.png'),side:THREE.DoubleSide}),//front side
+      new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('Images/sky/violentdays_bk.png'),side:THREE.DoubleSide}),//back side
+      new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('Images/sky/violentdays_up.png'),side:THREE.DoubleSide}),//top side
+      new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('Images/sky/violentdays_dn.png'),side:THREE.DoubleSide}),//bottom side
+      new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('Images/sky/violentdays_rt.png'),side:THREE.DoubleSide}),//right side
+      new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('Images/sky/violentdays_lf.png'),side:THREE.DoubleSide})//left side
+    ];
+    /*var material = new THREE.MeshFaceMaterial(cubeMaterial);
+    var cube= new THREE.Mesh(geometry,material);
+    scene.add(cube);*/
+
+    var material1 = new THREE.MeshFaceMaterial(cubeMaterial1);
+    var cube1= new THREE.Mesh(geometry1,material1);
+    scene.add(cube1);
+
+    camera.position.z=3;
+
+    var ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.8);
+    scene.add(ambientLight);
+
+    //Logic
+    var update = function(){
+
+    };
+
+
+    //draw scene
+    var render = function(){
+
+      renderer.render(scene,camera);
+
+    };
+
+
+    //run game loop(update, render, repeat)
+    var GameLoop = function(){
+
+      requestAnimationFrame(GameLoop);
+
+      update();
+      render();
+    };
+
+    GameLoop();
+</script>
+
+</html>
