@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+body{
+	font-family:arial;
+	font-size:13px;
+	line-height:1.5em;
+	color:#fff;
+	background: url(../images/maincover.jpg);
+}
+
+.clearfix{
+	clear:both;
+}
+
+#container{
+	float: left;
+	width:330px;
+	min-height:450px;
+	background:#333;
+	overflow:auto;
+	margin:40px auto;
+	margin-left :20px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:#666 solid 2px;
+}
+

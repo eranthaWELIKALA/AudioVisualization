@@ -1,6 +1,5 @@
 var audio;
 
-
 //Hide Pause Initially
 $('#pause').hide();
 	
@@ -17,7 +16,6 @@ initAudio($('#playlist li:first-child'));
 //   .catch( err => {
 //     console.error(err.message);
 //   });
-
 
 
 function initAudio(element){
