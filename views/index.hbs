@@ -1,0 +1,50 @@
+<div id="container">
+	<div id="audio-image">
+		<img class="cover" />
+	</div>
+	<div id="audio-player">
+
+		<div id="audio-info">
+			<span class="artist"></span> - <span class="title"></span>
+		</div>
+	
+		  <div id="tracker">		 		    
+					<input id="volume" type="range" min="0" max="10" value="5" />					
+					<span id="volume-text">volume</span>
+			</div>
+
+		
+		 <div id="buttons">
+		 	<span>
+			<button id="prev"></button>
+			<button id="play"></button>
+			<button id="pause"></button>
+			<button id="stop"></button>
+			<button id="next"></button>
+			</span>
+		 </div>
+		 <div class="clearfix"></div>
+		 <div id="tracker">
+			<div id="progressBar">
+				<span id="progress"></span>
+			</div>
+			<span id="duration"></span>
+		 </div>
+		 <div class="clearfix"></div>
+
+		 <ul id="playlist" class="hidden">
+
+			<li song="Breaking the habit.mp3" cover="Breaking the habit.jpg" artist="Linkin Park">Breaking the habit</li>
+			<li song="Crawling.mp3" cover="Crawling.jpg" artist="Linkin Park">Crawling</li>
+			<li song="Faint.mp3" cover="Faint.jpg" artist="Linkin Park">Faint</li>
+			<li song="Numb.mp3" cover="Numb.jpg" artist="Linkin Park">Numb</li>
+			<li song="One more light.mp3" cover="One more light.jpg" artist="Linkin Park">One more light</li>
+			<li song="Talking to myself.mp3" cover="Talking to myself.jpg" artist="Linkin Park">Talking to myself</li>
+
+		</ul>
+	</div>
+
+</div>
+
+<script src="/javascripts/jquery.js"></script>
+<script src="/javascripts/main.js"></script>
