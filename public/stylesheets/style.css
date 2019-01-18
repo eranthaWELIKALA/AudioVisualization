@@ -10,7 +10,7 @@ body{
 	font-size:13px;
 	line-height:1.5em;
 	color:#fff;
-	background: url(../images/bg.png);
+	background: url(../images/maincover.jpg);
 }
 
 .clearfix{
@@ -20,16 +20,41 @@ body{
 #container{
 	float: left;
 	width:330px;
-	min-height:450px;
+	min-height:430px;
 	background:#333;
 	overflow:auto;
-	margin:40px auto;
-	margin-left :20px;
+	margin:20px auto;
+	margin-left :20px;	
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	border-radius:10px;
 	border:#666 solid 2px;
 }
+
+#container1{
+	float: left;
+	width:770px;
+	min-height:460px;
+	background:#333;
+	overflow:auto;
+	margin:20px auto;	
+	margin-right: 40px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+	border:#666 solid 2px;
+}
+
+#back{
+	margin:20px auto;	
+	margin-right: 40px;
+	margin-bottom: 10px;
+	justify-content: flex-end;
+  	display: flex;
+	
+}
+
+
 
 #audio-image{
 	position:relative;

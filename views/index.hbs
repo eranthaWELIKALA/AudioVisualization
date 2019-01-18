@@ -1,51 +1,81 @@
 
 <link rel="stylesheet" href="./stylesheets/style.css" media="screen">
-<div id="container">
-	<div id="audio-image">
-		<img class="cover" />
-	</div>
-	<div id="audio-player">
+<div class ="row">
 
-		<div id="audio-info">
-			<span class="artist"></span> - <span class="title"></span>
+   <div class="col-md-4">
+
+		<div id="container">
+			<div id="audio-image">
+				<img class="cover" />
+			</div>
+			<div id="audio-player">
+
+				<div id="audio-info">
+					<span class="artist"></span> - <span class="title"></span>
+				</div>
+			
+				<div id="tracker">		 		    
+							<input id="volume" type="range" min="0" max="10" value="5" />					
+							<span id="volume-text">volume</span>
+					</div>
+
+				
+				<div id="buttons">
+					<span>
+					<button id="prev"></button>
+					<button id="play"></button>
+					<button id="pause"></button>
+					<button id="stop"></button>
+					<button id="next"></button>
+					</span>
+				</div>
+				<div class="clearfix"></div>
+				<div id="tracker">
+					<div id="progressBar">
+						<span id="progress"></span>
+					</div>
+					<span id="duration"></span>
+				</div>
+				<div class="clearfix"></div>
+
+				<ul id="playlist" class="hidden">
+
+					<li song="Breaking the habit.mp3" cover="Breaking the habit.jpg" artist="Linkin Park">Breaking the habit</li>
+					<li song="Crawling.mp3" cover="Crawling.jpg" artist="Linkin Park">Crawling</li>
+					<li song="Faint.mp3" cover="Faint.jpg" artist="Linkin Park">Faint</li>
+					<li song="Numb.mp3" cover="Numb.jpg" artist="Linkin Park">Numb</li>
+					<li song="One more light.mp3" cover="One more light.jpg" artist="Linkin Park">One more light</li>
+					<li song="Talking to myself.mp3" cover="Talking to myself.jpg" artist="Linkin Park">Talking to myself</li>
+
+				</ul>
+			</div>
+
 		</div>
-	
-		  <div id="tracker">		 		    
-					<input id="volume" type="range" min="0" max="10" value="5" />					
-					<span id="volume-text">volume</span>
+   </div>
+    <div class="col-md-8">
+		 <div class="row">
+
+			 <div id="container1">
+
+				{{!-- add the visualization part here  --}}
+
+
+
+
 			</div>
 
+		 </div>
+
+		 <div class="row">
+			  <div id="back">
+				<form action='/' method="post" id="main"></form>
+				<button type="submit" class="btn btn-success btn-xl "  style="font-size:2.0em ; color:#131111  "  form="main" >Back </button>
+			  </div>
+		 </div>
 		
-		 <div id="buttons">
-		 	<span>
-			<button id="prev"></button>
-			<button id="play"></button>
-			<button id="pause"></button>
-			<button id="stop"></button>
-			<button id="next"></button>
-			</span>
-		 </div>
-		 <div class="clearfix"></div>
-		 <div id="tracker">
-			<div id="progressBar">
-				<span id="progress"></span>
-			</div>
-			<span id="duration"></span>
-		 </div>
-		 <div class="clearfix"></div>
 
-		 <ul id="playlist" class="hidden">
-
-			<li song="Breaking the habit.mp3" cover="Breaking the habit.jpg" artist="Linkin Park">Breaking the habit</li>
-			<li song="Crawling.mp3" cover="Crawling.jpg" artist="Linkin Park">Crawling</li>
-			<li song="Faint.mp3" cover="Faint.jpg" artist="Linkin Park">Faint</li>
-			<li song="Numb.mp3" cover="Numb.jpg" artist="Linkin Park">Numb</li>
-			<li song="One more light.mp3" cover="One more light.jpg" artist="Linkin Park">One more light</li>
-			<li song="Talking to myself.mp3" cover="Talking to myself.jpg" artist="Linkin Park">Talking to myself</li>
-
-		</ul>
 	</div>
-
+	
 </div>
 
 <script src="/javascripts/main.js"></script>

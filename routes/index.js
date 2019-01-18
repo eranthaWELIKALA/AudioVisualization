@@ -6,5 +6,10 @@ router.get('/', function(req, res, next) {
   res.render('playlist', { title: 'Express' });
 });
 
+/* call linkinpark  page*/
+router.post('/linkinpark',function(req,res,next){
+  
+  res.render('index',{ });
+  });
 
 module.exports = router;
