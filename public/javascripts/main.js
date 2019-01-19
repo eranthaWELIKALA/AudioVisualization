@@ -9,6 +9,7 @@ initAudio($('#playlist li:first-child'));
 
 // console.log(document.currentScript.getAttribute('name'));
 
+
 function initAudio(element){
 	// console.log(element);
 	var song = element.attr('song');
