@@ -6,27 +6,18 @@ $('#pause').hide();
 //Initializer - Play First Song
 initAudio($('#playlist li:first-child'));
 
-
-// const mm = require('music-metadata');
-// const util = require('util')
-// mm.parseFile('../public/media/Faint.mp3', {native: true})
-//   .then( metadata => {
-//     console.log(util.inspect(metadata, { showHidden: false, depth: null }));
-//   })
-//   .catch( err => {
-//     console.error(err.message);
-//   });
-
+// console.log(document.currentScript.getAttribute('name'));
+var name =document.currentScript.getAttribute('name');
 
 function initAudio(element){
-	console.log(element);
+	// console.log(element);
 	var song = element.attr('song');
     var title = element.text();
     var cover = element.attr('cover');
-    var artist = element.attr('artist');
-
+	var artist = element.attr('artist');
+	
 	//Create a New Audio Object
-	audio = new Audio('media/' + song);
+	audio = new Audio('media/' + name+'/' +song);
 	
 	if(!audio.currentTime){
 		$('#duration').html('0.00');
@@ -36,8 +27,9 @@ function initAudio(element){
     $('#audio-player .artist').text(artist);
 	
 	//Insert Cover Image
-	$('img.cover').attr('src','images/covers/' + cover);
+	$('img.cover').attr('src','images/covers/'+name+'/'+ cover);
 	
+
 	$('#playlist li').removeClass('active');
     element.addClass('active');
 }
