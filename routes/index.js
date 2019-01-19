@@ -17,6 +17,11 @@ router.post('/edsheeran',function(req,res,next){
   res.render('index1',{ });
   });
 
+router.post('/err',function(req,res,next){
+  
+  res.render('error.hbs',{ });
+});
+  
 
 router.post('/back',function(req,res,next){  
     res.redirect('/');

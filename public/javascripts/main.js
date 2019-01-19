@@ -2,12 +2,13 @@ var audio;
 
 //Hide Pause Initially
 $('#pause').hide();
-	
+var name =document.currentScript.getAttribute('name');	
+
 //Initializer - Play First Song
 initAudio($('#playlist li:first-child'));
 
 // console.log(document.currentScript.getAttribute('name'));
-var name =document.currentScript.getAttribute('name');
+
 
 function initAudio(element){
 	// console.log(element);
