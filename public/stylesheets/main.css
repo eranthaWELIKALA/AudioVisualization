@@ -5,18 +5,31 @@
     outline: none;
 }
 
+.btn-lg {
+
+  font-size: 20px;
+  border-radius: 10px;
+  width: 200px;
+  height:130px;
+}
+
 #id1{
     font-size:25px;
     font-style: oblique;
-    color:rgb(77, 9, 9);
+    color:rgb(22, 27, 25);
     line-height:2.0em;
 }
+
+#id2{
+  color:rgb(245, 250, 248);
+}
+
 
 body{
 	font-family:arial;
 	font-size:13px;
 	line-height:1.5em;
-	color:#fff;
+	color:rgb(107, 36, 36);
 	background: url(../images/maincover.jpg);
 }
 
