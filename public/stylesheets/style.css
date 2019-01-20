@@ -189,4 +189,28 @@ button#next{
 	background:#000;
 	border-radius:5px;
 }
+.input{
+	border-style: inset;
+	border-color: #33CC99;
+	background: black;
+	color:red;
+}
+.back-btn{
+	height:70px;
+	background:url(../images/prev.png) no-repeat;
+}
+.play-btn{
+	height:70px;
+	background:url(../images/play.png) no-repeat;float:left;
+  }
 
+.for-btn{
+	height:70px;
+	background:url(../images/next.png) no-repeat;
+}
+.change-btn{
+	border-style: inset;
+	border-color: #33CC99;
+	background: black;
+	color:red;
+  }
